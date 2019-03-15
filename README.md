@@ -5,14 +5,47 @@
 
 ## 摘要
 本次试验基于各种低通与高通滤波器对图片进行处理，以实现图像平滑去噪或边缘提取等目的。具体实现内容如下：  
-- 空域低通滤波器：平滑去噪
+- 低通滤波器：平滑去噪
   - 使用不同大小的卷积模板：3x3，5x5，7x7
   - 使用不同类型低通滤波器：高斯滤波器，中值滤波器
-- 空域高通滤波器：锐化与边缘提取
+- 高通滤波器：锐化与边缘提取
   - 反锐化掩模
   - Sobel算子边缘提取
   - Laplace算子边缘提取
   - Canny算子边缘提取
 
-## 一、空域低通滤波器
+## 一、低通滤波器
+采用两种低通滤波器：中值滤波器和高斯滤波器，并使用不同大小的卷积模板进行低通滤波，效果如下：
+<p align="center">
+    <img src="https://github.com/an1006634493/hw4/blob/master/img/lowpass_test1.jpg" alt="Sample">
+    <p align="center">
+    </p>
+</p>
+<p align="center">
+    <img src="https://github.com/an1006634493/hw4/blob/master/img/lowpass_test2.jpg" alt="Sample">
+    <p align="center">
+    </p>
+</p>
 
+### 滤波效果
+可以看出，低通滤波器对原始图像有平滑、去噪的作用。因为图像中的边缘与噪点位置属于高频区，所以低通滤波后，边缘被平滑，噪点被背景平均化。  
+对比两种低通滤波器以及不同的卷积模板大小，有以下结论：  
+1. 中值滤波器的去噪能力更强，但高斯滤波器能保留更多非噪声图像细节；  
+2. 卷积模板越大，平滑与去噪的效果越明显。
+
+## 二、高通滤波器
+本节共使用4种高通滤波方式，分别为：反锐化掩模，Sobel算子边缘提取，Laplace算子边缘提取和Canny算子边缘提取。效果如下所示：
+<p align="center">
+    <img src="https://github.com/an1006634493/hw4/blob/master/img/highpass_test3.jpg" alt="Sample">
+    <p align="center">
+    </p>
+</p>
+<p align="center">
+    <img src="https://github.com/an1006634493/hw4/blob/master/img/highpass_test4.jpg" alt="Sample">
+    <p align="center">
+    </p>
+</p>
+
+### 滤波效果
+1. 反锐化掩模具有锐化图像边缘的效果，增强图像清晰度；
+2. 比较3种边缘提取算子，Sobel算子提取的信息最少，Laplace算子提取边缘适中且最符合原始图像的边缘特征，Canny算子提取边缘特征过多。
